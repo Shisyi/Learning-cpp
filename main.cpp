@@ -44,26 +44,54 @@ int bin_search(const vector<int>& mem, const int target_number) {
 	return(idx);
 }
 
+vector<int> bubble_sort(vector<int>& mem) {
+	int cnt = 1;
+	int tmp{};
+	while (cnt > 0) {
+		cnt = 0;
+		for (int i = 0; i < mem.size()-1; i++) {
+			if (mem[i] > mem[i + 1]) {
+				tmp = mem[i];
+				mem[i] = mem[i + 1];
+				mem[i + 1] = tmp;
+				cnt++;
+
+			}
+		}
+	};
+	return mem;
+}
+
 int main()
 {	
 	int array_size{};
 	int target_number{};
-	cout << "Please write memory size more then 0" << endl;
+	cout << "Please write memory size more then 0" << " : ";
 	cin >> array_size;
+	cout << "\n";
 
-	cout << "Please write the number to find from " <<  -num_2_negative <<  " to " << array_size- num_2_negative - 1 << endl;
-	cin >> target_number ;
+	cout << "Please write the number to find from " << -num_2_negative << " to " << array_size - num_2_negative - 1 << " : ";
+	cin >> target_number;
+	cout << "\n";
 
 	vector<int> mem(array_size);
 	
 	cout << "Elements of memory : ";
 	for (int i = 0; i < array_size; i++) {
-		mem[i] = i - num_2_negative;
+		//mem[i] = i - num_2_negative;
+		mem[i] = -(4*i - num_2_negative) % 7;
 		cout << mem[i] << " ";
-	};
-	cout << endl;
+	}
+	cout << endl << endl;
 
-	return(bin_search(mem,target_number));
+	bubble_sort(mem);
+	cout << "Elements of memory sorted : ";
+	for (int i = 0; i < array_size; i++) {
+		cout << mem[i] << " ";
+	}
+	cout << "\n" << "\n";
+
+	return bin_search(mem,target_number);
 
 };
 

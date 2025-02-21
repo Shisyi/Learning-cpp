@@ -1,0 +1,2 @@
+- Create binary search function
+- Bubble sorting in progress!
